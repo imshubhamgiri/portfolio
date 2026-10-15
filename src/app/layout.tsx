@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/shared/Navbar";
+import { TopNav } from "@/components/shared/TopNav";
+import { FloatingControls } from "@/components/shared/FloatingControls";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Developer Portfolio",
+  title: "Personal Developer Portfolio",
   description: "Interactive, meme-driven personal developer portfolio.",
 };
 
@@ -28,9 +29,10 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col bg-neutral-950 text-neutral-100 selection:bg-amber-500/20 selection:text-amber-200">
-        <Navbar />
+      <body className="min-h-full flex flex-col bg-[#0f0f11] text-neutral-100 selection:bg-[#bef264]/30 selection:text-[#bef264]">
+        <TopNav />
         <main className="flex-1 w-full flex flex-col">{children}</main>
+        <FloatingControls />
       </body>
     </html>
   );
