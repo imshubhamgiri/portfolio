@@ -10,7 +10,6 @@ import {
   CheckCircle2,
   ArrowDown,
   RotateCcw,
-  Sparkles,
   Terminal,
 } from "lucide-react";
 
@@ -19,49 +18,39 @@ type BackendStage = "idle" | "preparing" | "connected" | "ready";
 interface StageData {
   image: string;
   imageAlt: string;
-  badge: string;
   title: string;
   dialogue: string;
   codeLog: string;
-  statusColor: string;
 }
 
 const STAGE_CONFIG: Record<BackendStage, StageData> = {
   idle: {
     image: "/assets/memes/02-backend/tom-calling.png",
     imageAlt: "Tom asking if you need project data",
-    badge: "ACT 03 • THE HOTLINE",
     title: "“Do you need a project?”",
     dialogue: "Tom is on the line asking if you want to see the real project data. Give the order to dial.",
     codeLog: "> SYSTEM: Idle. Ready to initiate database dispatch query.",
-    statusColor: "text-[#bef264]",
   },
   preparing: {
     image: "/assets/memes/02-backend/tom-call.jpg",
     imageAlt: "Tom dialing rotary phone preparing database query",
-    badge: "STAGE 1/2 • PREPARING QUERY",
     title: "“Hold on, dialing the database...”",
     dialogue: "Tom puts on his shades and begins crafting the SQL payload. Resolving connections...",
     codeLog: "> DB: Connecting to pool... EXPLAIN ANALYZE SELECT * FROM projects;",
-    statusColor: "text-amber-400",
   },
   connected: {
     image: "/assets/memes/02-backend/tom-call-3.jpg",
     imageAlt: "Tom with receiver listening as backend connects and fetches",
-    badge: "STAGE 2/2 • BACKEND CONNECTED",
     title: "“200 OK — Fetching projects now!”",
     dialogue: "Line connected! High-speed stream established. Products & architecture payloads incoming.",
     codeLog: "> HTTP 200 OK (24ms) | Stream open | Transferring 3 project entities...",
-    statusColor: "text-emerald-400",
   },
   ready: {
     image: "/assets/memes/02-backend/tom-call-3.jpg",
     imageAlt: "Tom smiling backend fetch complete",
-    badge: "ACT 03 • PAYLOAD DELIVERED",
     title: "“Projects are ready for inspection!”",
     dialogue: "Everything fetched with zero lag. Scroll down to the next window to inspect the showcase.",
     codeLog: "> SUCCESS: 3 Projects delivered. Cache warm. Scroll to inspect.",
-    statusColor: "text-[#bef264]",
   },
 };
 
@@ -109,23 +98,8 @@ export const BackendSection: React.FC = () => {
       />
 
       <div className="z-10 w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-        {/* Left Column: Synced Dialogue, Action Button & Terminal */}
-        <div className="lg:col-span-7 flex flex-col space-y-5 text-left order-2 lg:order-1">
-          {/* Animated Status Badge */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current.badge}
-              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 8 }}
-              transition={{ duration: 0.25 }}
-              className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-700 text-xs font-mono w-fit ${current.statusColor}`}
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>{current.badge}</span>
-            </motion.div>
-          </AnimatePresence>
-
+        {/* Left Column: Synced Dialogue, Action Button & Terminal Display */}
+        <div className="lg:col-span-7 flex flex-col space-y-6 text-left order-2 lg:order-1">
           {/* Animated Synced Heading */}
           <AnimatePresence mode="wait">
             <motion.h2
@@ -134,28 +108,35 @@ export const BackendSection: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: -12 }}
               transition={{ duration: 0.3 }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white uppercase leading-[1.1]"
+              className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white uppercase leading-[1.08]"
             >
               {current.title}
             </motion.h2>
           </AnimatePresence>
 
-          {/* Animated Synced Dialogue */}
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={current.dialogue}
-              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="text-neutral-300 text-sm sm:text-base leading-relaxed max-w-xl"
-            >
-              {current.dialogue}
-            </motion.p>
-          </AnimatePresence>
+          {/* Dedicated Dialogue Display Panel */}
+          <div className="p-5 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 backdrop-blur-md shadow-2xl flex flex-col space-y-3">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={current.dialogue}
+                initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="text-neutral-200 text-sm sm:text-base leading-relaxed"
+              >
+                {current.dialogue}
+              </motion.p>
+            </AnimatePresence>
+
+            <span className="text-xs font-mono text-[#bef264] flex items-center gap-1.5">
+              <span>Status:</span>
+              <span className="font-semibold uppercase tracking-wider">{stage}</span>
+            </span>
+          </div>
 
           {/* Live Simulated Backend Console */}
-          <div className="rounded-xl border border-neutral-800 bg-[#0c0c0e] p-4 font-mono text-xs shadow-lg space-y-2">
+          <div className="rounded-xl border border-neutral-800/80 bg-[#08080a] p-4 font-mono text-xs shadow-lg space-y-2">
             <div className="flex items-center justify-between text-neutral-500 pb-2 border-b border-neutral-800/80">
               <span className="flex items-center gap-1.5">
                 <Terminal className="w-3.5 h-3.5 text-[#bef264]" />
@@ -184,7 +165,7 @@ export const BackendSection: React.FC = () => {
           </div>
 
           {/* Action Trigger Buttons */}
-          <div className="pt-2 flex flex-wrap items-center gap-4">
+          <div className="pt-1 flex flex-wrap items-center gap-4">
             {stage === "idle" && (
               <button
                 onClick={handleStartCall}
@@ -196,7 +177,7 @@ export const BackendSection: React.FC = () => {
             )}
 
             {(stage === "preparing" || stage === "connected") && (
-              <div className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-neutral-800 border border-neutral-700 text-neutral-200 text-xs sm:text-sm font-mono">
+              <div className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-neutral-900 border border-neutral-700 text-neutral-200 text-xs sm:text-sm font-mono">
                 <Loader2 className="w-4 h-4 text-[#bef264] animate-spin" />
                 <span>
                   {stage === "preparing"
@@ -229,32 +210,17 @@ export const BackendSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: Synced Meme Image with Smooth Cross-Fade */}
-        <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
-          <figure className="relative w-full max-w-md sm:max-w-lg overflow-hidden rounded-2xl border-2 border-neutral-700 bg-neutral-900 shadow-2xl">
-            {/* Retro Window Header */}
-            <div className="flex items-center justify-between border-b border-neutral-800 bg-[#161618] px-4 py-2.5 text-xs font-mono text-neutral-400">
-              <div className="flex items-center gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
-                <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
-                <span className="h-2.5 w-2.5 rounded-full bg-green-500/80" />
-                <span className="ml-2 font-semibold text-neutral-300">
-                  {stage === "idle" && "01_TOM_CALLING.PNG"}
-                  {stage === "preparing" && "02_TOM_QUERY_PREP.JPG"}
-                  {(stage === "connected" || stage === "ready") && "03_TOM_FETCHED.JPG"}
-                </span>
-              </div>
-              <span className="text-[10px] text-[#bef264] font-bold uppercase">
-                {stage}
-              </span>
-            </div>
+        {/* Right Column: Clean Standalone Meme Image with Smooth Cross-Fade */}
+        <div className="lg:col-span-5 flex justify-center items-center order-1 lg:order-2">
+          <div className="relative group max-w-sm sm:max-w-md w-full flex justify-center">
+            {/* Subtle ambient glow behind image */}
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#bef264]/15 via-transparent to-neutral-800/20 blur-xl opacity-50" />
 
-            {/* Smooth Animated Image Container */}
-            <div className="relative aspect-square w-full bg-black overflow-hidden flex items-center justify-center">
+            <div className="relative w-full max-w-[380px] sm:max-w-[420px] aspect-square flex items-center justify-center">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={current.image}
-                  initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.95 }}
+                  initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 1.03 }}
                   transition={{ duration: 0.35, ease: "easeInOut" }}
@@ -265,31 +231,23 @@ export const BackendSection: React.FC = () => {
                     alt={current.imageAlt}
                     fill
                     priority
-                    sizes="(max-width: 768px) 100vw, 500px"
-                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 420px"
+                    className="rounded-2xl shadow-2xl border border-neutral-800/80 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                   />
                 </motion.div>
               </AnimatePresence>
 
               {/* Dialing/Loading Indicator overlay during transition */}
               {(stage === "preparing" || stage === "connected") && (
-                <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] flex items-center justify-center pointer-events-none">
-                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-neutral-950/80 border border-neutral-700 text-[#bef264] text-xs font-mono">
+                <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] rounded-2xl flex items-center justify-center pointer-events-none">
+                  <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-950/90 border border-neutral-700 text-[#bef264] text-xs font-mono shadow-xl">
                     <Loader2 className="w-3.5 h-3.5 animate-spin" />
                     <span>{stage === "preparing" ? "DIALING..." : "CONNECTED..."}</span>
                   </div>
                 </div>
               )}
             </div>
-
-            {/* Caption */}
-            <figcaption className="border-t border-neutral-800 bg-[#161618] px-4 py-2.5 text-center font-mono text-xs text-neutral-300">
-              {stage === "idle" && "Tom: “Do you need project data? Click below.”"}
-              {stage === "preparing" && "Tom: “Preparing the query... dialing DB.”"}
-              {stage === "connected" && "Tom: “Connected! Fetching project payload.”"}
-              {stage === "ready" && "Tom: “Payload loaded! 200 OK.”"}
-            </figcaption>
-          </figure>
+          </div>
         </div>
       </div>
 

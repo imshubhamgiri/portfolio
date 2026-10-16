@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence, useInView, useReducedMotion } from "motion/react";
 import { SparkleDecor } from "@/components/shared/SparkleDecor";
 import { GithubIcon, LinkedinIcon } from "@/components/shared/Icons";
-import { Mail, RotateCcw, Skull, Sparkles } from "lucide-react";
+import { Mail, RotateCcw } from "lucide-react";
 
 export const OutroSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -42,7 +42,7 @@ export const OutroSection: React.FC = () => {
       id="job-milegi"
       ref={sectionRef}
       aria-label="Final Epilogue and Contact Section"
-      className="full-window-section relative flex flex-col items-center justify-center px-4 sm:px-8 py-12 text-neutral-100 overflow-hidden bg-[#0c0c0e]"
+      className="full-window-section relative flex flex-col items-center justify-center px-4 sm:px-8 py-12 text-neutral-100 overflow-hidden"
     >
       {/* ========================================================= */}
       {/* SUSPENSE BLACKOUT CURTAIN (2.5 - 3s PITCH BLACK SCREEN)    */}
@@ -83,17 +83,6 @@ export const OutroSection: React.FC = () => {
 
       {/* Main Revealed Content Container */}
       <div className="z-10 w-full max-w-3xl mx-auto flex flex-col items-center text-center space-y-6">
-        {/* Top Tag Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -12 }}
-          animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: -12 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-neutral-900 border border-neutral-700 text-[#bef264] text-xs font-mono select-none"
-        >
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>ACT 06 • THE FINAL PUNCHLINE</span>
-        </motion.div>
-
         {/* The Monkey Meme Image (Scales 0% to 100% with punchy bounce) */}
         <div className="w-full flex justify-center py-1">
           <motion.div
@@ -109,54 +98,38 @@ export const OutroSection: React.FC = () => {
               damping: 18,
               mass: 0.8,
             }}
-            className="w-full max-w-xs sm:max-w-sm"
+            className="relative group w-full max-w-xs sm:max-w-sm flex justify-center"
           >
-            <figure className="relative w-full overflow-hidden rounded-2xl border-2 border-neutral-700 bg-neutral-900 shadow-2xl group">
-              {/* Retro Window Header */}
-              <div className="flex items-center justify-between border-b border-neutral-800 bg-[#161618] px-4 py-2 text-xs font-mono text-neutral-400">
-                <div className="flex items-center gap-1.5">
-                  <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-green-500/80" />
-                  <span className="ml-2 font-semibold text-neutral-300">EXISTENTIAL_VERDICT.JPG</span>
-                </div>
-                <span className="text-[10px] text-[#bef264] font-bold flex items-center gap-1">
-                  <Skull className="w-3 h-3" /> PUNCHLINE
-                </span>
-              </div>
-
-              {/* Monkey Image */}
-              <div className="relative aspect-square w-full bg-black overflow-hidden flex items-center justify-center">
-                <Image
-                  src="/assets/memes/05-conclusion/mil-jayegi-kya.jpg"
-                  alt="Monkey staring with existential smirk: Mil jayegi kya job?"
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 380px"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-
-              {/* Caption */}
-              <figcaption className="border-t border-neutral-800 bg-[#161618] px-4 py-2 text-center font-mono text-xs text-neutral-300">
-                &ldquo;The moment of truth.&rdquo;
-              </figcaption>
-            </figure>
+            {/* Ambient soft glow behind image */}
+            <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-tr from-[#bef264]/20 to-neutral-800/20 blur-xl opacity-60" />
+            <Image
+              src="/assets/memes/05-conclusion/mil-jayegi-kya.jpg"
+              alt="Monkey staring with existential smirk: Mil jayegi kya job?"
+              width={380}
+              height={380}
+              priority
+              sizes="(max-width: 768px) 100vw, 380px"
+              className="relative rounded-2xl shadow-2xl border border-neutral-800/80 w-full h-auto aspect-square object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            />
           </motion.div>
         </div>
 
-        {/* Punchline Typography */}
+        {/* Dedicated Punchline & Text Display Panel */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           transition={{ duration: 0.45, delay: 0.2 }}
-          className="space-y-2"
+          className="p-6 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 backdrop-blur-md shadow-2xl max-w-lg mx-auto space-y-3"
         >
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#bef264] tracking-tight uppercase select-none">
+          <h2 className="text-3xl sm:text-5xl font-black text-[#bef264] tracking-tight uppercase select-none">
             &ldquo;Mil jayegi kya job? ☠️&rdquo;
           </h2>
 
-          <p className="text-neutral-400 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+          <p className="font-mono text-xs text-neutral-300">
+            &ldquo;The moment of truth.&rdquo;
+          </p>
+
+          <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed">
             Clean code, resilient backend architectures, fast modern UIs, and zero drama. Let&apos;s build something great together.
           </p>
         </motion.div>

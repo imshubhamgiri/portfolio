@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0f0f11;
+  --background: #050507;
   --foreground: #ededed;
 }
 
@@ -15,13 +15,13 @@
 html {
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
-  background-color: #0f0f11;
+  background-color: #050507;
   color: #ededed;
   overflow-y: scroll;
 }
 
 body {
-  background: #0f0f11;
+  background: #050507;
   color: #ededed;
   font-family: var(--font-geist-sans), Arial, sans-serif;
   margin: 0;

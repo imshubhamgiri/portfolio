@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { SparkleDecor } from "@/components/shared/SparkleDecor";
-import { ArrowDown, CornerDownRight, Sparkles } from "lucide-react";
+import { ArrowDown, CornerDownRight } from "lucide-react";
 
 export const WelcomeSection: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
@@ -34,78 +34,59 @@ export const WelcomeSection: React.FC = () => {
       />
 
       <div className="z-10 w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-        {/* Left Column: Reverted/Mirrored Meme Image (Tom Welcoming) */}
+        {/* Left Column: Clean Reverted/Mirrored Meme Image (Tom Welcoming) */}
         <motion.div
           initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="lg:col-span-6 flex justify-center order-2 lg:order-1"
+          className="lg:col-span-6 flex justify-center items-center order-2 lg:order-1"
         >
-          <figure className="relative w-full max-w-md sm:max-w-lg overflow-hidden rounded-2xl border-2 border-neutral-700 bg-neutral-900 shadow-2xl group">
-            {/* Retro Window Header */}
-            <div className="flex items-center justify-between border-b border-neutral-800 bg-[#161618] px-4 py-2 text-xs font-mono text-neutral-400">
-              <div className="flex items-center gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
-                <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
-                <span className="h-2.5 w-2.5 rounded-full bg-green-500/80" />
-                <span className="ml-2 font-semibold text-neutral-300">TOM_WELCOME.JPG</span>
-              </div>
-              <span className="text-[10px] text-[#bef264] font-bold">THIS WAY -&gt;</span>
-            </div>
-
-            {/* Reverted Image: Mirrored horizontally so Tom welcomes to the right */}
-            <div className="relative aspect-[16/10] w-full bg-black -scale-x-100 overflow-hidden">
-              <Image
-                src="/assets/memes/01-intro/e8b3314afc31cd5124106e0d25cf5dbc.jpg"
-                alt="Tom holding door open welcoming visitors inside"
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 550px"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-
-            {/* Caption */}
-            <figcaption className="border-t border-neutral-800 bg-[#161618] px-4 py-2.5 text-center font-mono text-xs text-neutral-300">
-              &ldquo;Come on in! Portfolio this way -&gt;&rdquo;
-            </figcaption>
-          </figure>
+          <div className="relative group max-w-md sm:max-w-lg w-full flex justify-center">
+            {/* Subtle ambient glow behind image */}
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#bef264]/15 via-transparent to-neutral-800/20 blur-xl opacity-60" />
+            <Image
+              src="/assets/memes/01-intro/e8b3314afc31cd5124106e0d25cf5dbc.jpg"
+              alt="Tom holding door open welcoming visitors inside"
+              width={554}
+              height={390}
+              priority
+              sizes="(max-width: 768px) 100vw, 550px"
+              className="relative -scale-x-100 rounded-2xl shadow-2xl border border-neutral-800/80 w-full h-auto object-cover transition-transform duration-300 "
+            />
+          </div>
         </motion.div>
 
-        {/* Right Column: Welcoming Invitation Text */}
+        {/* Right Column: Welcoming Invitation & Dialogue Display */}
         <motion.div
           initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-          className="lg:col-span-6 flex flex-col space-y-5 text-left order-1 lg:order-2"
+          className="lg:col-span-6 flex flex-col space-y-6 text-left order-1 lg:order-2"
         >
-          {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#bef264]/10 border border-[#bef264]/30 text-[#bef264] text-xs font-mono w-fit">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>ACT 01 • THE WELCOMING</span>
-          </div>
-
-          {/* Main Title matching reference typography */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase leading-[1.1]">
+          {/* Main Title */}
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase leading-[1.08]">
             Welcome to my <br />
             <span className="text-[#bef264]">little corner</span> of the internet.
           </h1>
 
-          {/* Speech Bubble / Directive */}
-          <div className="p-4 rounded-2xl bg-neutral-900/80 border border-neutral-700/80 backdrop-blur-md shadow-xl flex items-start gap-3">
-            <CornerDownRight className="w-5 h-5 text-[#bef264] shrink-0 mt-0.5" />
-            <div className="text-sm sm:text-base text-neutral-300">
-              <span className="font-bold text-white block">Tom says: &ldquo;This way -&gt;&rdquo;</span>
-              <p className="text-xs text-neutral-400 mt-1 leading-relaxed">
-                Step right through the door. No corporate buzzwords, just good engineering, chill vibes, and memes.
-              </p>
+          {/* Dialogue & Caption Display Area */}
+          <div className="p-5 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 backdrop-blur-md shadow-2xl flex flex-col space-y-3">
+            <div className="flex items-center gap-2 text-xs font-mono text-[#bef264]">
+              <CornerDownRight className="w-4 h-4 text-[#bef264]" />
+              <span className="font-semibold uppercase tracking-wider">Tom&apos;s Greeting</span>
             </div>
+            <p className="text-base sm:text-lg font-medium text-white italic">
+              &ldquo;Come on in! Portfolio this way -&gt;&rdquo;
+            </p>
+            <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+              Step right through the door. No corporate buzzwords, just good engineering, chill vibes, and memes.
+            </p>
           </div>
 
           {/* CTA / Scroll Indicator Button */}
-          <div className="pt-2 flex items-center gap-4">
+          <div className="pt-1 flex items-center gap-4">
             <a
               href="#intro"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#bef264] text-neutral-950 font-bold text-xs sm:text-sm hover:bg-[#a3e635] transition-all hover:scale-105 shadow-md shadow-[#bef264]/20"

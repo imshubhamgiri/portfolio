@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { SparkleDecor } from "@/components/shared/SparkleDecor";
-import { ArrowDown, Flame, Swords } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 
 export const LarpSection: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
@@ -13,7 +13,7 @@ export const LarpSection: React.FC = () => {
     <section
       id="larp"
       aria-label="Ready to LARP Meme Section"
-      className="full-window-section w-full relative flex flex-col items-center justify-center px-4 sm:px-8 py-12 text-neutral-100 overflow-hidden bg-[#0c0c0e]"
+      className="full-window-section w-full relative flex flex-col items-center justify-center px-4 sm:px-8 py-12 text-neutral-100 overflow-hidden"
     >
       {/* Background Retro Sparkles */}
       <SparkleDecor
@@ -30,18 +30,6 @@ export const LarpSection: React.FC = () => {
       />
 
       <div className="z-10 w-full max-w-6xl mx-auto flex flex-col items-center text-center space-y-6">
-        {/* Top Badge */}
-        <motion.div
-          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: -16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-mono select-none"
-        >
-          <Flame className="w-3.5 h-3.5 text-rose-400" />
-          <span>ACT 04 • THE DRAMATIC DROP</span>
-        </motion.div>
-
         {/* Cinematic Layered "READY TO LARP?" Typography (matching reference video frame 04) */}
         <div className="relative select-none">
           {/* Outlined Background Text */}
@@ -67,45 +55,38 @@ export const LarpSection: React.FC = () => {
           </motion.h2>
         </div>
 
-        {/* 100% Width Styled Meme Card */}
+        {/* Clean Standalone Meme Image */}
         <motion.div
           initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.55, delay: 0.1, ease: "easeOut" }}
-          className="w-full max-w-2xl mx-auto"
+          className="relative group w-full max-w-2xl mx-auto flex justify-center"
         >
-          <figure className="relative w-full overflow-hidden rounded-2xl border-2 border-neutral-700 bg-neutral-900 shadow-2xl group">
-            {/* Retro Window Header */}
-            <div className="flex items-center justify-between border-b border-neutral-800 bg-[#161618] px-4 py-2 text-xs font-mono text-neutral-400">
-              <div className="flex items-center gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
-                <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
-                <span className="h-2.5 w-2.5 rounded-full bg-green-500/80" />
-                <span className="ml-2 font-semibold text-neutral-300">LARP_SHOWDOWN.JPG</span>
-              </div>
-              <span className="text-[10px] text-[#bef264] font-bold flex items-center gap-1">
-                <Swords className="w-3 h-3" /> HYPE MAX
-              </span>
-            </div>
+          {/* Ambient soft glow behind image */}
+          <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-r from-rose-500/15 via-[#bef264]/15 to-transparent blur-xl opacity-60" />
+          <Image
+            src="/assets/memes/03-projects/Larp.jpg"
+            alt="Ready to LARP meme"
+            width={596}
+            height={335}
+            priority
+            sizes="(max-width: 768px) 100vw, 650px"
+            className="relative rounded-2xl shadow-2xl border border-neutral-800/80 w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          />
+        </motion.div>
 
-            {/* Original Meme Image */}
-            <div className="relative aspect-[16/9] w-full bg-black overflow-hidden">
-              <Image
-                src="/assets/memes/03-projects/Larp.jpg"
-                alt="Ready to LARP meme"
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 700px"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-
-            {/* Caption */}
-            <figcaption className="border-t border-neutral-800 bg-[#161618] px-4 py-2.5 text-center font-mono text-xs text-neutral-300">
-              &ldquo;Hype levels maxed out. Dropping into real software builds.&rdquo;
-            </figcaption>
-          </figure>
+        {/* Dedicated Subtitle / Caption Display Panel */}
+        <motion.div
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="p-4 rounded-xl bg-neutral-900/60 border border-neutral-800/80 backdrop-blur-md shadow-xl max-w-xl mx-auto"
+        >
+          <p className="font-mono text-xs sm:text-sm text-neutral-300">
+            &ldquo;Hype levels maxed out. Dropping into real software builds.&rdquo;
+          </p>
         </motion.div>
 
         {/* Downward Hand-Drawn / Glowing Arrow Cue */}

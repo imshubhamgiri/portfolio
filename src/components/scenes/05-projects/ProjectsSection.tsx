@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { SparkleDecor } from "@/components/shared/SparkleDecor";
 import { ProjectCard } from "@/components/shared/ProjectCard";
 import { placeholderProjects } from "@/data/projects";
-import { ArrowDown, Sparkles } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 
 export const ProjectsSection: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
@@ -29,16 +29,6 @@ export const ProjectsSection: React.FC = () => {
       <div className="z-10 w-full max-w-6xl mx-auto flex flex-col space-y-6">
         {/* Header Section */}
         <div className="flex flex-col items-center text-center space-y-2">
-          <motion.div
-            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: -12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#bef264]/10 border border-[#bef264]/30 text-[#bef264] text-xs font-mono select-none"
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>ACT 05 • SELECTED BUILDS</span>
-          </motion.div>
 
           <motion.h2
             initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}

@@ -6,7 +6,7 @@ import { GithubIcon } from "./Icons";
 
 export const TopNav: React.FC = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-3 bg-[#111112]/90 backdrop-blur-md border-b border-neutral-800/80">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-3 bg-[#050507]/90 backdrop-blur-md border-b border-neutral-900/80">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Left: Brand Logo & Title */}
         <Link

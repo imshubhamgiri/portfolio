@@ -73,17 +73,8 @@ export const IntroSection: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="lg:col-span-7 flex flex-col space-y-5 text-left"
+          className="lg:col-span-7 flex flex-col space-y-6 text-left"
         >
-          {/* Badge */}
-          <motion.div
-            variants={itemVariants}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#bef264]/10 border border-[#bef264]/30 text-[#bef264] text-xs font-mono w-fit"
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>ACT 02 • THE DEVELOPER</span>
-          </motion.div>
-
           {/* Main Headline */}
           <motion.h2
             variants={itemVariants}

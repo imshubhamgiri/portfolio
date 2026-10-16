@@ -29,7 +29,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col bg-[#0f0f11] text-neutral-100 selection:bg-[#bef264]/30 selection:text-[#bef264]">
+      <body className="min-h-full flex flex-col bg-[#050507] text-neutral-100 selection:bg-[#bef264]/30 selection:text-[#bef264]">
         <TopNav />
         <main className="flex-1 w-full flex flex-col">{children}</main>
         <FloatingControls />
