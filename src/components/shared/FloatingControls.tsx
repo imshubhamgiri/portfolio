@@ -22,28 +22,28 @@ export const FloatingControls: React.FC = () => {
   return (
     <>
       {/* Bottom Left Help Pill (as seen in reference video) */}
-      <div className="fixed bottom-6 left-6 z-40">
+      <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40">
         <button
           onClick={() => setShowHelpModal(true)}
           aria-label="Portfolio info & easter eggs"
-          className="flex h-11 w-11 items-center justify-center rounded-full bg-[#bef264] text-neutral-950 shadow-lg shadow-black/40 hover:scale-110 active:scale-95 transition-all font-bold text-base cursor-pointer"
+          className="flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-[#bef264] text-neutral-950 shadow-lg shadow-black/40 hover:scale-110 active:scale-95 transition-all font-bold text-sm sm:text-base cursor-pointer"
         >
-          <HelpCircle className="w-5 h-5" />
+          <HelpCircle className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
       </div>
 
       {/* Bottom Right Scroll to Top Pill (as seen in reference video) */}
       <div
-        className={`fixed bottom-6 right-6 z-40 transition-all duration-300 ${
+        className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 transition-all duration-300 ${
           showBackToTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
         }`}
       >
         <button
           onClick={scrollToTop}
           aria-label="Scroll back to top"
-          className="flex h-11 w-11 items-center justify-center rounded-full bg-[#bef264] text-neutral-950 shadow-lg shadow-black/40 hover:scale-110 active:scale-95 transition-all font-bold text-base cursor-pointer"
+          className="flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-[#bef264] text-neutral-950 shadow-lg shadow-black/40 hover:scale-110 active:scale-95 transition-all font-bold text-sm sm:text-base cursor-pointer"
         >
-          <ArrowUp className="w-5 h-5 stroke-[2.5]" />
+          <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
         </button>
       </div>
 

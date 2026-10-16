@@ -35,4 +35,14 @@ body {
   height: 100dvh;
   min-height: 100dvh;
   width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-height: 720px) {
+  .full-window-section {
+    height: auto;
+    min-height: 100dvh;
+    overflow-y: visible;
+  }
 }
