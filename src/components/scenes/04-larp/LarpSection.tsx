@@ -82,10 +82,13 @@ export const LarpSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="p-4 rounded-xl bg-neutral-900/60 border border-neutral-800/80 backdrop-blur-md shadow-xl max-w-xl mx-auto"
+          className="p-5 rounded-xl bg-neutral-900/60 border border-neutral-800/80 backdrop-blur-md shadow-xl max-w-xl mx-auto space-y-1.5"
         >
-          <p className="font-mono text-xs sm:text-sm text-neutral-300">
-            &ldquo;Hype levels maxed out. Dropping into real software builds.&rdquo;
+          <p className="font-mono text-xs sm:text-sm text-[#bef264] font-semibold">
+            &ldquo;Recruiter: Are you actually building distributed systems or just LARPing?&rdquo;
+          </p>
+          <p className="font-sans text-xs sm:text-sm text-neutral-300">
+            Me: &ldquo;Bro, I literally deployed Datadog tracing, BullMQ concurrency, and local 384-dim CPU embeddings to keep cloud bills at $0. Look at the builds below.&rdquo;
           </p>
         </motion.div>
 

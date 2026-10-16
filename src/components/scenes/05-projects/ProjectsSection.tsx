@@ -37,7 +37,7 @@ export const ProjectsSection: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.05 }}
             className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white uppercase"
           >
-            Real Projects. <span className="text-[#bef264]">Real Code.</span>
+            Real Architectures. <span className="text-[#bef264]">Zero Tutorial Hell.</span>
           </motion.h2>
 
           <motion.p
@@ -45,9 +45,9 @@ export const ProjectsSection: React.FC = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-neutral-400 text-xs sm:text-sm max-w-xl mx-auto"
+            className="text-neutral-400 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed"
           >
-            Freshly fetched from the backend. Fully functional architectures with tested performance and responsive design.
+            From slashing MongoDB latency by 98% in FoodInReels, to running $0 local CPU embeddings in Live-Docs, and building an autonomous bot (JobPilot) so I don&apos;t have to manually click &apos;Apply&apos; on LinkedIn like a peasant.
           </motion.p>
         </div>
 
@@ -64,11 +64,11 @@ export const ProjectsSection: React.FC = () => {
             href="#job-milegi"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#bef264] text-neutral-950 font-bold text-xs sm:text-sm hover:bg-[#a3e635] transition-all hover:scale-105 shadow-md shadow-[#bef264]/20"
           >
-            <span>Proceed to Outro</span>
+            <span>Proceed to The Existential Question</span>
             <ArrowDown className="w-4 h-4 animate-bounce" />
           </a>
           <span className="text-xs font-mono text-neutral-500 hidden sm:inline">
-            [Next: The existential monkey question]
+            [Next: Will all this backend code actually get me a job?]
           </span>
         </div>
       </div>

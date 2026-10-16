@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useInView, useReducedMotion } from "motion/react";
 import { SparkleDecor } from "@/components/shared/SparkleDecor";
-import { GithubIcon, LinkedinIcon } from "@/components/shared/Icons";
+import { GithubIcon, LinkedinIcon, LeetCodeIcon } from "@/components/shared/Icons";
 import { Mail, RotateCcw } from "lucide-react";
 
 export const OutroSection: React.FC = () => {
@@ -60,7 +60,7 @@ export const OutroSection: React.FC = () => {
             <div className="flex flex-col items-center gap-3">
               <span className="h-2 w-2 rounded-full bg-[#bef264] animate-ping" />
               <span className="font-mono text-[11px] tracking-widest uppercase text-neutral-600 animate-pulse">
-                [ CALCULATING RECRUITER VERDICT... ]
+                [ CALCULATING RECRUITER VERDICT FOR SHUBHAM... ]
               </span>
             </div>
           </motion.div>
@@ -126,11 +126,11 @@ export const OutroSection: React.FC = () => {
           </h2>
 
           <p className="font-mono text-xs text-neutral-300">
-            &ldquo;The moment of truth.&rdquo;
+            &ldquo;Solved 400+ LeetCode problems, cut database latencies by 98%, and built a bot to apply for me... Aur phir bhi monkey puch raha hai!&rdquo;
           </p>
 
           <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed">
-            Clean code, resilient backend architectures, fast modern UIs, and zero drama. Let&apos;s build something great together.
+            <strong className="text-white">Shubham Kumar</strong> &bull; Patna, Bihar &bull; BCA (MMHU, 2026). Ready for high-throughput backend roles, event-driven pipelines, and zero-BS teams.
           </p>
         </motion.div>
 
@@ -142,31 +142,41 @@ export const OutroSection: React.FC = () => {
           className="flex flex-wrap items-center justify-center gap-3 pt-2"
         >
           <a
-            href="https://github.com"
+            href="https://github.com/skgiri569"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-900 border border-neutral-700 text-neutral-200 text-xs font-mono transition-all hover:bg-neutral-800 hover:text-white hover:border-[#bef264] shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-neutral-900 border border-neutral-700 text-neutral-200 text-xs font-mono transition-all hover:bg-neutral-800 hover:text-white hover:border-[#bef264] shadow-sm"
           >
-            <GithubIcon className="w-4 h-4" />
+            <GithubIcon className="w-4 h-4 text-[#bef264]" />
             <span>GitHub</span>
           </a>
 
           <a
-            href="https://linkedin.com"
+            href="https://linkedin.com/in/skgiri569"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-900 border border-neutral-700 text-neutral-200 text-xs font-mono transition-all hover:bg-neutral-800 hover:text-white hover:border-[#bef264] shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-neutral-900 border border-neutral-700 text-neutral-200 text-xs font-mono transition-all hover:bg-neutral-800 hover:text-white hover:border-[#bef264] shadow-sm"
           >
-            <LinkedinIcon className="w-4 h-4" />
+            <LinkedinIcon className="w-4 h-4 text-[#bef264]" />
             <span>LinkedIn</span>
           </a>
 
           <a
-            href="mailto:contact@example.com"
+            href="https://leetcode.com/u/skgiri569"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-neutral-900 border border-neutral-700 text-neutral-200 text-xs font-mono transition-all hover:bg-neutral-800 hover:text-white hover:border-[#bef264] shadow-sm"
+          >
+            <LeetCodeIcon className="w-4 h-4 text-amber-400" />
+            <span>LeetCode (400+)</span>
+          </a>
+
+          <a
+            href="mailto:skgiri569@gmail.com"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#bef264] text-neutral-950 font-bold text-xs font-mono transition-all hover:bg-[#a3e635] hover:scale-105 shadow-md shadow-[#bef264]/20"
           >
             <Mail className="w-4 h-4" />
-            <span>Email Me</span>
+            <span>skgiri569@gmail.com</span>
           </a>
 
           <button

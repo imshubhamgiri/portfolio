@@ -38,12 +38,12 @@ export const IntroSection: React.FC = () => {
   };
 
   const skills = [
-    { label: "Next.js 16", icon: Layers, tag: "App Router" },
-    { label: "TypeScript", icon: Code2, tag: "Strict Mode" },
-    { label: "Tailwind CSS", icon: Flame, tag: "Styling" },
-    { label: "Motion", icon: Sparkles, tag: "Animations" },
-    { label: "Node / APIs", icon: Cpu, tag: "Backend" },
-    { label: "PostgreSQL", icon: Terminal, tag: "Databases" },
+    { label: "Node.js & C++", icon: Cpu, tag: "Core Engines" },
+    { label: "TypeScript & Next.js", icon: Code2, tag: "Type-Safe" },
+    { label: "BullMQ & Redis", icon: Layers, tag: "Queues & Locks" },
+    { label: "Postgres & MongoDB", icon: Terminal, tag: "DB Optimization" },
+    { label: "OpenTelemetry & Datadog", icon: Flame, tag: "Observability" },
+    { label: "Pinecone & Groq RAG", icon: Sparkles, tag: "$0 Local Embeddings" },
   ];
 
   return (
@@ -80,8 +80,8 @@ export const IntroSection: React.FC = () => {
             variants={itemVariants}
             className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase leading-[1.08]"
           >
-            Crafting software with <br />
-            <span className="text-[#bef264]">real engineering</span> &amp; chill vibes.
+            Backend Engineer from Patna <br />
+            <span className="text-[#bef264]">slaying 600ms latencies</span> &amp; chill vibes.
           </motion.h2>
 
           {/* Story Narrative */}
@@ -89,13 +89,13 @@ export const IntroSection: React.FC = () => {
             variants={itemVariants}
             className="text-neutral-300 text-sm sm:text-base leading-relaxed max-w-xl"
           >
-            I build modern web platforms, distributed systems, and delightful interfaces that don&apos;t take themselves too seriously. I value rock-solid TypeScript, snappy user interactions, and zero corporate fluff.
+            Hey, I&apos;m Shubham Kumar. While other devs argue about tabs vs spaces on LinkedIn, I spend my nights tuning Redis distributed locks, running 3-tier rate limiters, and solving 400+ LeetCode problems so binary trees don&apos;t jump me in my sleep. Currently doing my BCA at MMHU, Patna (graduating 2026). I build backends that respond so fast your browser doesn&apos;t even get to show the loading spinner.
           </motion.p>
 
           {/* Core Tech Stack Badges */}
           <motion.div variants={itemVariants} className="pt-1">
             <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 block mb-2.5">
-              [Core Tech Arsenal]
+              [Battle-Tested Tech Arsenal]
             </span>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
               {skills.map((skill) => {
@@ -114,19 +114,19 @@ export const IntroSection: React.FC = () => {
           </motion.div>
 
           {/* Reference Video "Call the backend" CTA Button with cursor ring */}
-          <motion.div variants={itemVariants} className="pt-3 flex flex-wrap items-center gap-4">
+          <motion.div variants={itemVariants} className="pt-2 flex flex-wrap items-center gap-4">
             <a
               href="#backend"
               className="relative inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#bef264] text-neutral-950 font-bold text-xs sm:text-sm hover:bg-[#a3e635] transition-all hover:scale-105 shadow-md shadow-[#bef264]/20 group cursor-pointer"
             >
               <PhoneCall className="w-4 h-4 text-neutral-950 group-hover:rotate-12 transition-transform" />
-              <span>Call the backend 🤝</span>
+              <span>Call Patna Backend 🤝</span>
               <span className="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
             </a>
 
             <span className="text-xs font-mono text-neutral-400 flex items-center gap-1.5">
               <span>Next Scene:</span>
-              <span className="text-neutral-200 font-semibold">Backend Hotline Simulation</span>
+              <span className="text-neutral-200 font-semibold">Simulate 9.03ms Hotline</span>
             </span>
           </motion.div>
         </motion.div>
@@ -139,45 +139,53 @@ export const IntroSection: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
           className="lg:col-span-5 flex justify-center"
         >
-          <div className="w-full max-w-md rounded-2xl border-2 border-neutral-700 bg-neutral-900/90 shadow-2xl overflow-hidden font-mono text-xs backdrop-blur-md">
+          <div className="w-full max-w-md rounded-2xl border-2 border-neutral-800 bg-neutral-900/90 shadow-2xl overflow-hidden font-mono text-xs backdrop-blur-md">
             {/* Terminal Window Header */}
             <div className="flex items-center justify-between border-b border-neutral-800 bg-[#161618] px-4 py-2.5 text-neutral-400">
               <div className="flex items-center gap-1.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
                 <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
                 <span className="h-2.5 w-2.5 rounded-full bg-green-500/80" />
-                <span className="ml-2 font-semibold text-neutral-300">developer_profile.ts</span>
+                <span className="ml-2 font-semibold text-neutral-300">shubham_profile.ts</span>
               </div>
-              <span className="text-[10px] text-[#bef264] font-bold">READY</span>
+              <span className="text-[10px] text-[#bef264] font-bold">ONLINE</span>
             </div>
 
             {/* Terminal Code Body */}
-            <div className="p-5 space-y-3 bg-[#0c0c0e] text-neutral-300 leading-relaxed overflow-x-auto">
-              <div className="text-neutral-500">{`// Personal developer specifications`}</div>
+            <div className="p-5 space-y-3 bg-[#08080a] text-neutral-300 leading-relaxed overflow-x-auto">
+              <div className="text-neutral-500">{`// Production-grade backend specs`}</div>
               <p>
                 <span className="text-purple-400">const</span>{" "}
-                <span className="text-[#bef264]">developer</span> = &#123;
+                <span className="text-[#bef264]">shubham</span> = &#123;
               </p>
               <div className="pl-4 space-y-1">
                 <p>
+                  <span className="text-neutral-400">location:</span>{" "}
+                  <span className="text-amber-300">&quot;Patna, Bihar 📍&quot;</span>,
+                </p>
+                <p>
+                  <span className="text-neutral-400">degree:</span>{" "}
+                  <span className="text-amber-300">&quot;BCA (MMHU, 2026)&quot;</span>,
+                </p>
+                <p>
                   <span className="text-neutral-400">role:</span>{" "}
-                  <span className="text-amber-300">&quot;Full-Stack Engineer&quot;</span>,
+                  <span className="text-amber-300">&quot;Distributed Systems Sorcerer&quot;</span>,
                 </p>
                 <p>
-                  <span className="text-neutral-400">focus:</span>{" "}
-                  <span className="text-amber-300">&quot;High-Performance Web &amp; APIs&quot;</span>,
+                  <span className="text-neutral-400">leetCodeSolved:</span>{" "}
+                  <span className="text-cyan-400">400+ (DP &amp; Graphs)</span>,
                 </p>
                 <p>
-                  <span className="text-neutral-400">coffeeConversion:</span>{" "}
-                  <span className="text-cyan-400">99.8</span>,
+                  <span className="text-neutral-400">p50QueryLatency:</span>{" "}
+                  <span className="text-[#bef264]">&quot;9.03ms (RIP $lookup)&quot;</span>,
                 </p>
                 <p>
-                  <span className="text-neutral-400">chillLevel:</span>{" "}
-                  <span className="text-cyan-400">100</span>,
+                  <span className="text-neutral-400">cloudEmbeddingsBill:</span>{" "}
+                  <span className="text-emerald-400">&quot;$0.00 (Local CPU RAG)&quot;</span>,
                 </p>
                 <p>
-                  <span className="text-neutral-400">readyForChaos:</span>{" "}
-                  <span className="text-emerald-400">true</span>,
+                  <span className="text-neutral-400">jobBotStrategy:</span>{" "}
+                  <span className="text-amber-300">&quot;Built JobPilot to apply 24/7 🤖&quot;</span>,
                 </p>
               </div>
               <p>&#125;;</p>
@@ -185,13 +193,13 @@ export const IntroSection: React.FC = () => {
               <div className="pt-2 border-t border-neutral-800/80 text-[11px] text-neutral-400 space-y-1">
                 <div className="flex items-center justify-between text-neutral-500">
                   <span>DISPATCH_TARGET</span>
-                  <span className="text-[#bef264]">SCENE_03_BACKEND</span>
+                  <span className="text-[#bef264]">BULLMQ_DISPATCH</span>
                 </div>
                 <p className="text-neutral-300">
-                  &gt; Tom is waiting by the rotary phone.
+                  &gt; 400+ LeetCode problems neutralized. 0 unhandled rejections.
                 </p>
                 <p className="text-neutral-500">
-                  &gt; Scroll down or click &ldquo;Call the backend&rdquo; to test latency.
+                  &gt; Scroll down to test real backend latency with Tom.
                 </p>
               </div>
             </div>
@@ -200,9 +208,9 @@ export const IntroSection: React.FC = () => {
             <div className="border-t border-neutral-800 bg-[#161618] px-4 py-2 flex items-center justify-between text-[11px] text-neutral-400">
               <span className="flex items-center gap-1.5">
                 <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
-                <span>System operational</span>
+                <span>Patna Node Operational</span>
               </span>
-              <span className="text-neutral-500">100dvh snap locked</span>
+              <span className="text-neutral-500">9.03ms p50 query</span>
             </div>
           </div>
         </motion.div>

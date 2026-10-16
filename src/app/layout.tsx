@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Personal Developer Portfolio",
-  description: "Interactive, meme-driven personal developer portfolio.",
+  title: "Shubham Kumar | Distributed Systems & Backend Engineer",
+  description: "Portfolio of Shubham Kumar - Backend engineer from Patna, slayer of slow database queries, BullMQ connoisseur, and 400+ LeetCode solver.",
 };
 
 export default function RootLayout({

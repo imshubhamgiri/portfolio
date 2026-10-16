@@ -67,21 +67,21 @@ export const WelcomeSection: React.FC = () => {
         >
           {/* Main Title */}
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase leading-[1.08]">
-            Welcome to my <br />
-            <span className="text-[#bef264]">little corner</span> of the internet.
+            Welcome to Shubham&apos;s <br />
+            <span className="text-[#bef264]">distributed corner</span> of the internet.
           </h1>
 
           {/* Dialogue & Caption Display Area */}
           <div className="p-5 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 backdrop-blur-md shadow-2xl flex flex-col space-y-3">
             <div className="flex items-center gap-2 text-xs font-mono text-[#bef264]">
               <CornerDownRight className="w-4 h-4 text-[#bef264]" />
-              <span className="font-semibold uppercase tracking-wider">Tom&apos;s Greeting</span>
+              <span className="font-semibold uppercase tracking-wider">Tom&apos;s Greeting &bull; Patna HQ</span>
             </div>
             <p className="text-base sm:text-lg font-medium text-white italic">
-              &ldquo;Come on in! Portfolio this way -&gt;&rdquo;
+              &ldquo;Come on in! Don&apos;t worry, the server hasn&apos;t crashed (yet).&rdquo;
             </p>
-            <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-              Step right through the door. No corporate buzzwords, just good engineering, chill vibes, and memes.
+            <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+              BCA student from Patna by day, latency assassin by night. Step right through the door—zero corporate buzzwords, just 9.03ms APIs, BullMQ queues, and memes.
             </p>
           </div>
 
@@ -95,7 +95,7 @@ export const WelcomeSection: React.FC = () => {
               <ArrowDown className="w-4 h-4 animate-bounce" />
             </a>
             <span className="text-xs font-mono text-neutral-500 hidden sm:inline">
-              [Scroll down to enter intro]
+              [Scroll down to meet the engineer]
             </span>
           </div>
         </motion.div>

@@ -13,10 +13,13 @@ export const TopNav: React.FC = () => {
           href="#welcome"
           className="flex items-center gap-2.5 text-neutral-100 font-bold hover:text-[#bef264] transition-colors"
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900 border border-neutral-700 text-white">
-            <GithubIcon className="w-5 h-5" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900 border border-neutral-700 text-[#bef264] font-mono text-xs font-bold">
+            SK
           </div>
-          <span className="font-sans text-base sm:text-lg tracking-tight">Personal</span>
+          <div className="flex flex-col">
+            <span className="font-sans text-sm sm:text-base tracking-tight leading-tight">Shubham Kumar</span>
+            <span className="text-[10px] font-mono text-neutral-400">Patna &bull; Backend Engineer</span>
+          </div>
         </Link>
 
         {/* Center: Jump anchors */}
@@ -28,16 +31,16 @@ export const TopNav: React.FC = () => {
             01 Welcome
           </Link>
           <Link href="#intro" className="hover:text-[#bef264] transition-colors">
-            02 Intro
+            02 Patna to Prod
           </Link>
           <Link href="#backend" className="hover:text-[#bef264] transition-colors">
-            03 Backend
+            03 9ms Hotline
           </Link>
           <Link href="#larp" className="hover:text-[#bef264] transition-colors">
-            04 LARP
+            04 LARP Check
           </Link>
           <Link href="#projects" className="hover:text-[#bef264] transition-colors">
-            05 Projects
+            05 Real Builds
           </Link>
           <Link href="#job-milegi" className="hover:text-[#bef264] transition-colors">
             06 Job Milegi?
@@ -47,16 +50,16 @@ export const TopNav: React.FC = () => {
         {/* Right: Reference video pill buttons */}
         <div className="flex items-center gap-2 text-xs font-medium">
           <a
-            href="#intro"
-            className="hidden sm:inline-flex px-3.5 py-1.5 rounded-full border border-neutral-700 text-neutral-200 hover:border-neutral-500 transition-colors"
+            href="mailto:skgiri569@gmail.com"
+            className="hidden sm:inline-flex px-3.5 py-1.5 rounded-full border border-neutral-700 text-neutral-200 hover:border-neutral-500 transition-colors font-mono text-[11px]"
           >
-            Explore
+            skgiri569@gmail.com
           </a>
           <a
             href="#job-milegi"
             className="px-4 py-1.5 rounded-full bg-[#bef264] text-neutral-950 font-bold hover:bg-[#a3e635] transition-all hover:scale-105 shadow-sm shadow-[#bef264]/20"
           >
-            Contact
+            Hire Me 🤝
           </a>
         </div>
       </div>
