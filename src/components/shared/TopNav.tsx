@@ -21,32 +21,7 @@ export const TopNav: React.FC = () => {
             <span className="text-[10px] font-mono text-neutral-400">Backend &amp; Full-Stack Dev</span>
           </div>
         </Link>
-
-        {/* Center: Jump anchors */}
-        <nav
-          aria-label="Scene navigation"
-          className="hidden md:flex items-center gap-6 text-xs font-mono text-neutral-400"
-        >
-          <Link href="#welcome" className="hover:text-[#bef264] transition-colors">
-            01 Welcome
-          </Link>
-          <Link href="#intro" className="hover:text-[#bef264] transition-colors">
-            02 Intro
-          </Link>
-          <Link href="#backend" className="hover:text-[#bef264] transition-colors">
-            03 Backend Call
-          </Link>
-          <Link href="#larp" className="hover:text-[#bef264] transition-colors">
-            04 LARP?
-          </Link>
-          <Link href="#projects" className="hover:text-[#bef264] transition-colors">
-            05 Projects
-          </Link>
-          <Link href="#job-milegi" className="hover:text-[#bef264] transition-colors">
-            06 Job Milegi?
-          </Link>
-        </nav>
-
+       
         {/* Right: Reference video pill buttons */}
         <div className="flex items-center gap-2 text-xs font-medium">
           <a

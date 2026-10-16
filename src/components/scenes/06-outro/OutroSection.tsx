@@ -59,7 +59,7 @@ export const OutroSection: React.FC = () => {
             {/* Subtle Suspense Pulse */}
             <div className="flex flex-col items-center gap-3">
               <span className="h-2 w-2 rounded-full bg-[#bef264] animate-ping" />
-              <span className="font-mono text-[11px] tracking-widest uppercase text-neutral-600 animate-pulse">
+              <span className="font-mono text-[11px] tracking-widest uppercase text-sky-600 animate-pulse">
                 [ CALCULATING RECRUITER VERDICT FOR SHUBHAM... ]
               </span>
             </div>
@@ -82,15 +82,15 @@ export const OutroSection: React.FC = () => {
       />
 
       {/* Main Revealed Content Container */}
-      <div className="z-10 w-full max-w-2xl mx-auto flex flex-col items-center text-center space-y-3 sm:space-y-4 px-2">
-        {/* The Monkey Meme Image (Scales 0% to 100% with punchy bounce) */}
-        <div className="w-full flex justify-center">
+      <div className="z-10 w-full max-w-6xl xl:max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center my-auto px-4">
+        {/* Left Column: The Monkey Meme Window (Capturing ~75% of window height) */}
+        <div className="lg:col-span-7 flex justify-center items-center w-full order-2 lg:order-1">
           <motion.div
-            initial={shouldReduceMotion ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+            initial={shouldReduceMotion ? { scale: 1, opacity: 1 } : { scale: 0.85, opacity: 0 }}
             animate={
               isRevealed
                 ? { scale: 1, opacity: 1 }
-                : { scale: 0, opacity: 0 }
+                : { scale: 0.85, opacity: 0 }
             }
             transition={{
               type: "spring",
@@ -98,95 +98,96 @@ export const OutroSection: React.FC = () => {
               damping: 18,
               mass: 0.8,
             }}
-            className="relative group w-auto flex justify-center"
+            className="relative group w-full max-w-md sm:max-w-lg lg:max-w-xl xl:max-w-2xl flex justify-center"
           >
             {/* Ambient soft glow behind image */}
-            <div className="absolute -inset-1 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-[#bef264]/20 to-neutral-800/20 blur-lg sm:blur-xl opacity-60" />
-            <Image
-              src="/assets/memes/05-conclusion/mil-jayegi-kya.jpg"
-              alt="Monkey staring with existential smirk: Mil jayegi kya job?"
-              width={260}
-              height={260}
-              priority
-              sizes="(max-width: 640px) 140px, (max-width: 768px) 180px, 220px"
-              className="relative rounded-xl sm:rounded-2xl shadow-2xl border border-neutral-800/80 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 max-h-[22vh] aspect-square object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-            />
+            <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-tr from-[#bef264]/20 via-transparent to-neutral-800/25 blur-2xl opacity-60 pointer-events-none" />
+
+            {/* Clean Standalone Meme Image Container (No filename text detail) */}
+            <div className="relative w-full aspect-square max-h-[50vh] sm:max-h-[62vh] lg:max-h-[72vh] xl:max-h-[75vh] overflow-hidden rounded-2xl border-2 border-neutral-800/90 shadow-2xl bg-black flex items-center justify-center">
+              <Image
+                src="/assets/memes/05-conclusion/mil-jayegi-kya.jpg"
+                alt="Monkey staring with existential smirk: Mil jayegi kya job?"
+                fill
+                priority
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 600px, 850px"
+                className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+              />
+            </div>
           </motion.div>
         </div>
 
-        {/* Dedicated Punchline & Text Display Panel */}
+        {/* Right Column: Dedicated Punchline, Text & Connecting Links */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+          initial={{ opacity: 0, x: 20 }}
+          animate={isRevealed ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
           transition={{ duration: 0.45, delay: 0.2 }}
-          className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-neutral-900/70 border border-neutral-800/80 backdrop-blur-md shadow-2xl max-w-lg mx-auto space-y-1.5 sm:space-y-2"
+          className="lg:col-span-5 flex flex-col space-y-3.5 sm:space-y-4 text-left order-1 lg:order-2"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#bef264] tracking-tight uppercase select-none">
-            &ldquo;Mil jayegi kya job? ☠️&rdquo;
-          </h2>
+          {/* Punchline Card */}
+          <div className="p-4 sm:p-5 lg:p-6 rounded-2xl bg-neutral-900/70 border border-neutral-800/80 backdrop-blur-md shadow-2xl space-y-2.5 sm:space-y-3">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#bef264] tracking-tight uppercase select-none leading-tight">
+              &ldquo;Mil jayegi kya job? ☠️&rdquo;
+            </h2>
 
-          <p className="font-mono text-xs sm:text-sm text-neutral-300 leading-snug">
-            &ldquo;Built an automated bot to apply for jobs, solved 400+ LeetCode problems, wrote backend APIs... aur yahan monkey se validation maang raha hoon.&rdquo;
-          </p>
+            <p className="font-mono text-xs sm:text-sm text-neutral-300 leading-relaxed">
+              &ldquo;What do you think? If yes Connect and offer me job&rdquo;
+            </p>
 
-          <p className="text-neutral-400 text-[11px] sm:text-xs leading-relaxed">
-            <strong className="text-white">Shubham Kumar</strong> &bull; Backend &amp; Full-Stack Dev. Looking for teams that actually ship code and don&apos;t take themselves too seriously.
-          </p>
-        </motion.div>
+            <p className="text-neutral-400 text-xs leading-relaxed pt-1 border-t border-neutral-800/80">
+              <strong className="text-white">Shubham Kumar</strong> &bull; Backend &amp; Full-Stack Dev. Looking for teams that actually ship code and don&apos;t take themselves too seriously.
+            </p>
+          </div>
 
-        {/* Real Connecting Links */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 pt-1"
-        >
-          <a
-            href="https://github.com/skgiri569"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-neutral-900 border border-neutral-700 text-neutral-200 text-[11px] sm:text-xs font-mono transition-all hover:bg-neutral-800 hover:text-white hover:border-[#bef264] shadow-sm"
-          >
-            <GithubIcon className="w-3.5 h-3.5 text-[#bef264]" />
-            <span>GitHub</span>
-          </a>
+          {/* Real Connecting Links */}
+          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 pt-0.5">
+            <a
+              href="https://github.com/skgiri569"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-neutral-900 border border-neutral-700 text-neutral-200 text-[11px] sm:text-xs font-mono transition-all hover:bg-neutral-800 hover:text-white hover:border-[#bef264] shadow-sm"
+            >
+              <GithubIcon className="w-3.5 h-3.5 text-[#bef264]" />
+              <span>GitHub</span>
+            </a>
 
-          <a
-            href="https://linkedin.com/in/skgiri569"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-neutral-900 border border-neutral-700 text-neutral-200 text-[11px] sm:text-xs font-mono transition-all hover:bg-neutral-800 hover:text-white hover:border-[#bef264] shadow-sm"
-          >
-            <LinkedinIcon className="w-3.5 h-3.5 text-[#bef264]" />
-            <span>LinkedIn</span>
-          </a>
+            <a
+              href="https://linkedin.com/in/skgiri569"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-neutral-900 border border-neutral-700 text-neutral-200 text-[11px] sm:text-xs font-mono transition-all hover:bg-neutral-800 hover:text-white hover:border-[#bef264] shadow-sm"
+            >
+              <LinkedinIcon className="w-3.5 h-3.5 text-[#bef264]" />
+              <span>LinkedIn</span>
+            </a>
 
-          <a
-            href="https://leetcode.com/u/skgiri569"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-neutral-900 border border-neutral-700 text-neutral-200 text-[11px] sm:text-xs font-mono transition-all hover:bg-neutral-800 hover:text-white hover:border-[#bef264] shadow-sm"
-          >
-            <LeetCodeIcon className="w-3.5 h-3.5 text-amber-400" />
-            <span>LeetCode (400+)</span>
-          </a>
+            <a
+              href="https://leetcode.com/u/skgiri569"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-neutral-900 border border-neutral-700 text-neutral-200 text-[11px] sm:text-xs font-mono transition-all hover:bg-neutral-800 hover:text-white hover:border-[#bef264] shadow-sm"
+            >
+              <LeetCodeIcon className="w-3.5 h-3.5 text-amber-400" />
+              <span>LeetCode (400+)</span>
+            </a>
 
-          <a
-            href="mailto:skgiri569@gmail.com"
-            className="inline-flex items-center gap-1.5 px-4 sm:px-4.5 py-1.5 sm:py-2 rounded-full bg-[#bef264] text-neutral-950 font-bold text-[11px] sm:text-xs font-mono transition-all hover:bg-[#a3e635] hover:scale-105 shadow-md shadow-[#bef264]/20"
-          >
-            <Mail className="w-3.5 h-3.5" />
-            <span>skgiri569@gmail.com</span>
-          </a>
+            <a
+              href="mailto:skgiri569@gmail.com"
+              className="inline-flex items-center gap-1.5 px-4 sm:px-4.5 py-1.5 sm:py-2 rounded-full bg-[#bef264] text-neutral-950 font-bold text-[11px] sm:text-xs font-mono transition-all hover:bg-[#a3e635] hover:scale-105 shadow-md shadow-[#bef264]/20"
+            >
+              <Mail className="w-3.5 h-3.5" />
+              <span>skgiri569@gmail.com</span>
+            </a>
 
-          <button
-            onClick={handleReplay}
-            title="Replay Blackout Suspense"
-            className="inline-flex items-center gap-1 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white text-[11px] sm:text-xs font-mono transition-colors cursor-pointer"
-          >
-            <RotateCcw className="w-3 h-3" />
-            <span className="hidden sm:inline">Replay</span>
-          </button>
+            <button
+              onClick={handleReplay}
+              title="Replay Blackout Suspense"
+              className="inline-flex items-center gap-1 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white text-[11px] sm:text-xs font-mono transition-colors cursor-pointer"
+            >
+              <RotateCcw className="w-3 h-3" />
+              <span className="hidden sm:inline">Replay</span>
+            </button>
+          </div>
         </motion.div>
       </div>
 

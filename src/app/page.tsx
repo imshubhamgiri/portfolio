@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { WelcomeSection } from "@/components/scenes/01-welcome/WelcomeSection";
 import { IntroSection } from "@/components/scenes/02-intro/IntroSection";
 import { BackendSection } from "@/components/scenes/03-backend/BackendSection";
@@ -9,6 +9,8 @@ import { ProjectsSection } from "@/components/scenes/05-projects/ProjectsSection
 import { OutroSection } from "@/components/scenes/06-outro/OutroSection";
 
 export default function Home() {
+  const [isProjectLoaded, setIsProjectLoaded] = useState<boolean>(false);
+
   return (
     <div className="flex flex-col w-full">
       {/* ========================================================= */}
@@ -24,22 +26,32 @@ export default function Home() {
       {/* ========================================================= */}
       {/* SECTION 03: BACKEND API SIMULATION (FULL WINDOW)         */}
       {/* ========================================================= */}
-      <BackendSection />
+      <BackendSection
+        isProjectLoaded={isProjectLoaded}
+        setIsProjectLoaded={setIsProjectLoaded}
+      />
 
       {/* ========================================================= */}
-      {/* SECTION 04: READY TO LARP (FULL WINDOW - 100% PORT WIDTH) */}
+      {/* SECTIONS 04, 05, 06: UNLOCKED WHEN TOM'S CALL COMPLETES    */}
       {/* ========================================================= */}
-      <LarpSection />
+      {isProjectLoaded && (
+        <>
+          {/* ========================================================= */}
+          {/* SECTION 04: READY TO LARP (FULL WINDOW - 100% PORT WIDTH) */}
+          {/* ========================================================= */}
+          <LarpSection />
 
-      {/* ========================================================= */}
-      {/* SECTION 05: SELECTED PROJECTS (FULL WINDOW)               */}
-      {/* ========================================================= */}
-      <ProjectsSection />
+          {/* ========================================================= */}
+          {/* SECTION 05: SELECTED PROJECTS (FULL WINDOW)               */}
+          {/* ========================================================= */}
+          <ProjectsSection />
 
-      {/* ========================================================= */}
-      {/* SECTION 06: SUSPENSE BLACKOUT & OUTRO (FULL WINDOW)       */}
-      {/* ========================================================= */}
-      <OutroSection />
+          {/* ========================================================= */}
+          {/* SECTION 06: SUSPENSE BLACKOUT & OUTRO (FULL WINDOW)       */}
+          {/* ========================================================= */}
+          <OutroSection />
+        </>
+      )}
     </div>
   );
 }

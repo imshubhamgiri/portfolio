@@ -33,27 +33,30 @@ export const WelcomeSection: React.FC = () => {
         className="absolute bottom-24 right-10 sm:right-32 w-5 h-5 animate-pulse"
       />
 
-      <div className="z-10 w-full max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-10 items-center my-auto">
-        {/* Left Column: Clean Reverted/Mirrored Meme Image (Tom Welcoming) */}
+      <div className="z-10 w-full max-w-6xl xl:max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center my-auto">
+        {/* Left Column: Tom Welcoming Window (Capturing ~75% of window height) */}
         <motion.div
           initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="lg:col-span-6 flex justify-center items-center order-2 lg:order-1"
+          className="lg:col-span-7 flex justify-center items-center order-2 lg:order-1 w-full"
         >
-          <div className="relative group max-w-[260px] sm:max-w-[340px] lg:max-w-[420px] w-full flex justify-center">
+          <div className="relative group w-full max-w-lg sm:max-w-xl lg:max-w-2xl xl:max-w-3xl flex justify-center">
             {/* Subtle ambient glow behind image */}
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#bef264]/15 via-transparent to-neutral-800/20 blur-xl opacity-60" />
-            <Image
-              src="/assets/memes/01-intro/e8b3314afc31cd5124106e0d25cf5dbc.jpg"
-              alt="Tom holding door open welcoming visitors inside"
-              width={554}
-              height={390}
-              priority
-              sizes="(max-width: 640px) 260px, (max-width: 1024px) 340px, 420px"
-              className="relative -scale-x-100 rounded-2xl shadow-2xl border border-neutral-800/80 w-full max-h-[26vh] sm:max-h-[34vh] lg:max-h-[44vh] object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-            />
+            <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-r from-[#bef264]/20 via-transparent to-neutral-800/25 blur-2xl opacity-60 pointer-events-none" />
+
+            {/* Clean Standalone Meme Image Container (No tom.jpg text detail) */}
+            <div className="relative w-full aspect-[16/10] max-h-[50vh] sm:max-h-[62vh] lg:max-h-[72vh] xl:max-h-[75vh] overflow-hidden rounded-2xl border-2 border-neutral-800/90 shadow-2xl bg-black -scale-x-100 flex items-center justify-center">
+              <Image
+                src="/assets/memes/01-intro/e8b3314afc31cd5124106e0d25cf5dbc.jpg"
+                alt="Tom holding door open welcoming visitors inside"
+                fill
+                priority
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 600px, 850px"
+                className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+              />
+            </div>
           </div>
         </motion.div>
 
@@ -63,7 +66,7 @@ export const WelcomeSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-          className="lg:col-span-6 flex flex-col space-y-3 sm:space-y-4 lg:space-y-5 text-left order-1 lg:order-2"
+          className="lg:col-span-5 flex flex-col space-y-3 sm:space-y-4 lg:space-y-5 text-left order-1 lg:order-2"
         >
           {/* Main Title */}
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white uppercase leading-[1.08]">

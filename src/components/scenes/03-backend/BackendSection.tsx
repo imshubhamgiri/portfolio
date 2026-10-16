@@ -54,7 +54,17 @@ const STAGE_CONFIG: Record<BackendStage, StageData> = {
   },
 };
 
-export const BackendSection: React.FC = () => {
+export interface BackendSectionProps {
+  isProjectLoaded?: boolean;
+  setIsProjectLoaded?: (loaded: boolean) => void;
+  onProjectsLoaded?: (loaded: boolean) => void;
+}
+
+export const BackendSection: React.FC<BackendSectionProps> = ({
+  isProjectLoaded,
+  setIsProjectLoaded,
+  onProjectsLoaded,
+}) => {
   const [stage, setStage] = useState<BackendStage>("idle");
   const shouldReduceMotion = useReducedMotion();
 
@@ -68,9 +78,11 @@ export const BackendSection: React.FC = () => {
     setTimeout(() => {
       setStage("connected");
 
-      // Transition 3: After another 1 second, mark as ready
+      // Transition 3: After another 1 second, mark as ready and unlock projects
       setTimeout(() => {
         setStage("ready");
+        setIsProjectLoaded?.(true);
+        onProjectsLoaded?.(true);
       }, 1000);
     }, 1000);
   };
@@ -97,9 +109,9 @@ export const BackendSection: React.FC = () => {
         className="absolute bottom-16 right-8 sm:right-16 w-6 h-6 sm:w-7 sm:h-7 opacity-70"
       />
 
-      <div className="z-10 w-full max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-10 items-center my-auto">
+      <div className="z-10 w-full max-w-6xl xl:max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center my-auto">
         {/* Left Column: Synced Dialogue, Action Button & Terminal Display */}
-        <div className="lg:col-span-7 flex flex-col space-y-2.5 sm:space-y-4 text-left order-2 lg:order-1">
+        <div className="lg:col-span-6 flex flex-col space-y-2.5 sm:space-y-4 text-left order-2 lg:order-1">
           {/* Animated Synced Heading */}
           <AnimatePresence mode="wait">
             <motion.h2
@@ -210,13 +222,13 @@ export const BackendSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: Clean Standalone Meme Image with Smooth Cross-Fade */}
-        <div className="lg:col-span-5 flex justify-center items-center order-1 lg:order-2">
-          <div className="relative group max-w-[170px] sm:max-w-[240px] lg:max-w-[340px] w-full flex justify-center">
+        {/* Right Column: Clean Standalone Meme Image (Wide & Prominent, No Tom.jpg Header) */}
+        <div className="lg:col-span-6 flex justify-center items-center order-1 lg:order-2 w-full">
+          <div className="relative group w-full max-w-sm sm:max-w-md lg:max-w-xl xl:max-w-2xl flex justify-center">
             {/* Subtle ambient glow behind image */}
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#bef264]/15 via-transparent to-neutral-800/20 blur-xl opacity-50" />
+            <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-r from-[#bef264]/20 via-transparent to-neutral-800/25 blur-2xl opacity-60 pointer-events-none" />
 
-            <div className="relative w-full aspect-square max-h-[22vh] sm:max-h-[30vh] lg:max-h-[40vh] flex items-center justify-center">
+            <div className="relative w-full aspect-square sm:aspect-[4/3] lg:aspect-square max-h-[44vh] sm:max-h-[56vh] lg:max-h-[66vh] xl:max-h-[70vh] flex items-center justify-center overflow-hidden rounded-2xl border-2 border-neutral-800/90 shadow-2xl bg-[#08080a]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={current.image}
@@ -231,17 +243,17 @@ export const BackendSection: React.FC = () => {
                     alt={current.imageAlt}
                     fill
                     priority
-                    sizes="(max-width: 640px) 170px, (max-width: 1024px) 240px, 340px"
-                    className="rounded-2xl shadow-2xl border border-neutral-800/80 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 550px, 750px"
+                    className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                   />
                 </motion.div>
               </AnimatePresence>
 
               {/* Dialing/Loading Indicator overlay during transition */}
               {(stage === "preparing" || stage === "connected") && (
-                <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] rounded-2xl flex items-center justify-center pointer-events-none">
-                  <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-950/90 border border-neutral-700 text-[#bef264] text-[11px] font-mono shadow-xl">
-                    <Loader2 className="w-3 h-3 animate-spin" />
+                <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] rounded-2xl flex items-center justify-center pointer-events-none z-10">
+                  <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-950/90 border border-neutral-700 text-[#bef264] text-xs sm:text-sm font-mono shadow-xl">
+                    <Loader2 className="w-4 h-4 animate-spin" />
                     <span>{stage === "preparing" ? "DIALING..." : "CONNECTED..."}</span>
                   </div>
                 </div>
@@ -251,10 +263,19 @@ export const BackendSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Bottom Scroll Cue */}
+      {/* Bottom Scroll / Call Cue */}
       <div className="hidden sm:flex absolute bottom-4 left-1/2 -translate-x-1/2 flex-col items-center gap-1 text-[11px] font-mono text-neutral-500 select-none">
-        <span>SCROLL DOWN</span>
-        <ArrowDown className="w-3.5 h-3.5 animate-bounce text-[#bef264]" />
+        {isProjectLoaded || stage === "ready" ? (
+          <>
+            <span>SCROLL DOWN FOR PROJECTS</span>
+            <ArrowDown className="w-3.5 h-3.5 animate-bounce text-[#bef264]" />
+          </>
+        ) : (
+          <span className="text-neutral-500 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#bef264] animate-ping" />
+            <span>[ CLICK &quot;CALL BACKEND&quot; ABOVE TO UNLOCK PROJECTS ]</span>
+          </span>
+        )}
       </div>
     </section>
   );
